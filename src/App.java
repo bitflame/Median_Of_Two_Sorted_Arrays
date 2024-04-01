@@ -1,16 +1,14 @@
 public class App {
     public static double findMedianSortedArrays(int[] arrayOne, int[] arrayTwo) {
-        int lo = 0, n1 = arrayOne.length, n2 = arrayTwo.length;
-        if (arrayOne.length < arrayTwo.length) {
-            n1 = arrayOne.length;
-            n2 = arrayTwo.length;
-        } else {
-            n1 = arrayTwo.length;
-            n2 = arrayOne.length;
+        if (arrayOne.length > arrayTwo.length) {
+            int[] temp = arrayOne;
+            arrayOne = arrayTwo;
+            arrayTwo = temp;
         }
+        int lo = 0, n1 = arrayOne.length, n2 = arrayTwo.length;
         int hi = n1, cut1, cut2, l1, l2, r1, r2, result = 0;
         while (lo <= hi) {
-            cut1 = lo + (hi - lo) / 2;
+            cut1 = (hi - lo) / 2;
             cut2 = (n1 + n2) / 2 - cut1;
             // I am a bit hesitant about the line below since n1 is not neccessarily the
             // length of arrayOne
